@@ -1,0 +1,8 @@
+flutter_native_splash:
+  color: "#00bf63"
+  image: "assets/images/Tralalelo..png"
+  image_dark: "assets/images/Tralalelo..png"
+  android: true
+  ios: true
+  android_gravity: center_crop
+  ios_content_mode: scaleAspectFill
