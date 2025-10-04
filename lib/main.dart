@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tralalelo_pra_ukk/home/home_page.dart';
 import 'auth/auth_page.dart';
 
 void main() {
@@ -20,7 +21,8 @@ void main() {
           titleSmall: TextStyle(fontFamily: 'Poppins'),
         ),
       ),
-      home: Scaffold(backgroundColor: Colors.white, body: AuthPage()),
+      initialRoute: '/',
+      routes: {'/': (context) => AuthPage(), '/home': (context) => HomePage()},
     ),
   );
 }

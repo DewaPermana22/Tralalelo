@@ -10,11 +10,11 @@ class AuthPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
-              const Spacer(),
+              const SizedBox(height: 40),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Column(
@@ -50,19 +50,18 @@ class AuthPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      "or",
+                      "OR",
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
-                        color: Colors.grey,
+                        color: Colors.black87,
                       ),
                     ),
                   ),
                   Expanded(child: Divider(color: Colors.grey, thickness: 1)),
                 ],
               ),
-
               const SizedBox(height: 20),
               FButton(
                 style: FButtonStyle.outline(),
@@ -78,7 +77,7 @@ class AuthPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(),
+              const SizedBox(height: 40),
             ],
           ),
         ),
