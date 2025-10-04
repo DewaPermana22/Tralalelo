@@ -1,44 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:forui/forui.dart';
+import 'auth/auth_page.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: const HomePage(),
-    ),
-  );
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FButton(
-                onPress: () {
-                  print('Button pressed!');
-                },
-                child: Text('Klik Saya!'), // Add the required child parameter
-              ),
-              SizedBox(height: 20),
-              // Contoh ForUI Card
-              FCard(
-                title: Text('Card Title'),
-                subtitle: Text('Card subtitle'),
-                child: Text('Ini adalah ForUI Card'),
-              ),
-            ],
-          ),
+      theme: ThemeData(
+        fontFamily: 'Poppins', // Set font global
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontFamily: 'Poppins'),
+          bodyMedium: TextStyle(fontFamily: 'Poppins'),
+          bodySmall: TextStyle(fontFamily: 'Poppins'),
+          displayLarge: TextStyle(fontFamily: 'Poppins'),
+          displayMedium: TextStyle(fontFamily: 'Poppins'),
+          displaySmall: TextStyle(fontFamily: 'Poppins'),
+          titleLarge: TextStyle(fontFamily: 'Poppins'),
+          titleMedium: TextStyle(fontFamily: 'Poppins'),
+          titleSmall: TextStyle(fontFamily: 'Poppins'),
         ),
       ),
-    );
-  }
+      home: Scaffold(backgroundColor: Colors.white, body: AuthPage()),
+    ),
+  );
 }
