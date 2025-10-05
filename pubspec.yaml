@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.4.6
+  flutter_svg: ^2.2.1
   font_awesome_flutter: ^10.9.1
   forui: ^0.14.1
 
@@ -22,6 +23,10 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/Tralalelo..png
+    - assets/svg/house-regular-full.svg
+    - assets/svg/icons8-google.svg
+    - assets/svg/
+
   fonts:
     - family: Poppins
       fonts:

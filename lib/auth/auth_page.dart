@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forui/widgets/button.dart';
 import 'package:tralalelo_pra_ukk/auth/widgets/auth_form_wdget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -65,7 +66,11 @@ class AuthPage extends StatelessWidget {
               const SizedBox(height: 20),
               FButton(
                 style: FButtonStyle.outline(),
-                prefix: Icon(Icons.login, color: Colors.black87),
+                prefix: SvgPicture.asset(
+                  'assets/svg/icons8-google.svg',
+                  width: 30,
+                  height: 30,
+                ),
                 onPress: () {},
                 child: Text(
                   "Sign in with Google",
