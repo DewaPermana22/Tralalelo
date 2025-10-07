@@ -11,22 +11,32 @@ class TaskAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.white,
+      toolbarHeight: 80,
       elevation: 0,
-      title: const Text(
-        'Daftar Tugas',
-        style: TextStyle(
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w600,
-          color: Colors.black87,
+      flexibleSpace: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Daftar Tugas',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
+              ),
+            ),
+            IconButton(
+              icon: const Icon(
+                FontAwesomeIcons.filter,
+                color: Colors.white70,
+                size: 20,
+              ),
+              onPressed: () {},
+            ),
+          ],
         ),
       ),
-      actions: [
-        IconButton(
-          icon: const Icon(FontAwesomeIcons.filter, color: Colors.black87),
-          onPressed: () {},
-        ),
-      ],
     );
   }
 }

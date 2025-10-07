@@ -8,12 +8,13 @@ class TaskListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: const TaskAppBar(),
       body: const TaskListBody(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.green,
+        onPressed: () {
+          Navigator.pushNamed(context, '/createTask');
+        },
+        backgroundColor: Theme.of(context).colorScheme.primary,
         child: const Icon(Icons.add),
       ),
     );

@@ -20,6 +20,11 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
 
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo_light.png"
+
 flutter:
   assets:
     - assets/images/Tralalelo..png

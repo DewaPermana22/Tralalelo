@@ -33,7 +33,7 @@ class BerandaAppBar extends StatelessWidget implements PreferredSizeWidget {
       'Desember',
     ];
 
-    return '${days[now.weekday - 1]}, ${now.day} ${months[now.month - 1]} ${now.year}';
+    return '${days[now.weekday % 7]}, ${now.day} ${months[now.month - 1]} ${now.year}';
   }
 
   String _getCurrentTime() {
@@ -43,9 +43,10 @@ class BerandaAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.white,
       elevation: 0,
       titleSpacing: 20,
       toolbarHeight: 80,
@@ -54,22 +55,22 @@ class BerandaAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Tralalelo',
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color: colorScheme.primary,
                 fontSize: 22,
               ),
             ),
             const SizedBox(height: 2),
             Text(
               _getCurrentDate(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w400,
-                color: Colors.grey,
+                color: colorScheme.onSurface,
                 fontSize: 14,
               ),
             ),
@@ -78,18 +79,16 @@ class BerandaAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 10,
-          ), // Padding vertikal untuk actions
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 _getCurrentTime(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
-                  color: Colors.green,
+                  color: colorScheme.primary,
                   fontSize: 14,
                 ),
               ),
@@ -98,18 +97,17 @@ class BerandaAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         const SizedBox(width: 8),
         Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 10,
-          ), // Padding vertikal untuk icon
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: IconButton(
-            icon: const Icon(
+            icon: Icon(
               FontAwesomeIcons.bell,
-              color: Colors.black87,
+              color: colorScheme.onSurface,
               size: 20,
             ),
             onPressed: () {},
           ),
         ),
+        const SizedBox(width: 8),
       ],
     );
   }

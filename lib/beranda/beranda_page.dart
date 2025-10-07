@@ -7,10 +7,6 @@ class BerandaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: BerandaAppBar(),
-      body: const BerandaBody(),
-    );
+    return Scaffold(appBar: BerandaAppBar(), body: const BerandaBody());
   }
 }

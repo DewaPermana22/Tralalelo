@@ -19,14 +19,18 @@ class TaskCard extends StatelessWidget {
     required this.priority,
   });
 
-  Color get priorityColor {
-    switch (priority) {
-      case 'Tinggi':
-        return Colors.red;
-      case 'Sedang':
-        return Colors.orange;
-      case 'Rendah':
-        return Colors.green;
+  Color getPriorityColor(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    switch (priority.toLowerCase()) {
+      case 'high':
+      case 'tinggi':
+        return isDark ? const Color(0xFFF87171) : const Color(0xFFEF4444);
+      case 'medium':
+      case 'sedang':
+        return isDark ? const Color(0xFFFBBF24) : const Color(0xFFF59E0B);
+      case 'low':
+      case 'rendah':
+        return isDark ? const Color(0xFF34D399) : const Color(0xFF10B981);
       default:
         return Colors.grey;
     }
@@ -34,14 +38,24 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final priorityColor = getPriorityColor(context);
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent,
+          width: 1,
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: isDark
+                ? Colors.black.withOpacity(0.3)
+                : Colors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -49,25 +63,26 @@ class TaskCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Checkbox/Status Icon
           Container(
             width: 40,
             height: 40,
             decoration: BoxDecoration(
               color: isDone
-                  ? Colors.green.withOpacity(0.1)
-                  : Colors.orange.withOpacity(0.1),
+                  ? (isDark ? const Color(0xFF34D399) : Colors.green)
+                        .withOpacity(0.1)
+                  : (isDark ? const Color(0xFFFBBF24) : Colors.orange)
+                        .withOpacity(0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
               isDone ? FontAwesomeIcons.circleCheck : FontAwesomeIcons.clock,
-              color: isDone ? Colors.green : Colors.orange,
+              color: isDone
+                  ? (isDark ? const Color(0xFF34D399) : Colors.green)
+                  : (isDark ? const Color(0xFFFBBF24) : Colors.orange),
               size: 20,
             ),
           ),
           const SizedBox(width: 16),
-
-          // Task Details
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,7 +93,7 @@ class TaskCard extends StatelessWidget {
                     fontSize: 16,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                    color: colorScheme.onSurface,
                     decoration: isDone ? TextDecoration.lineThrough : null,
                   ),
                 ),
@@ -92,22 +107,21 @@ class TaskCard extends StatelessWidget {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.blue.withOpacity(0.1),
+                        color: (isDark ? const Color(0xFF60A5FA) : Colors.blue)
+                            .withOpacity(0.1),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
                         category,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 10,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
-                          color: Colors.blue,
+                          color: isDark ? const Color(0xFF60A5FA) : Colors.blue,
                         ),
                       ),
                     ),
                     const SizedBox(width: 8),
-
-                    // Priority
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
@@ -128,12 +142,10 @@ class TaskCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-
-                    // Time
                     Icon(
                       FontAwesomeIcons.clock,
                       size: 10,
-                      color: Colors.grey[400],
+                      color: colorScheme.onSurface.withOpacity(0.4),
                     ),
                     const SizedBox(width: 4),
                     Text(
@@ -142,7 +154,7 @@ class TaskCard extends StatelessWidget {
                         fontSize: 12,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
-                        color: Colors.grey[600],
+                        color: colorScheme.onSurface.withOpacity(0.6),
                       ),
                     ),
                   ],
@@ -154,18 +166,16 @@ class TaskCard extends StatelessWidget {
                     fontSize: 12,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
-                    color: Colors.grey[500],
+                    color: colorScheme.onSurface.withOpacity(0.5),
                   ),
                 ),
               ],
             ),
           ),
-
-          // Chevron Icon
           Icon(
             FontAwesomeIcons.chevronRight,
             size: 16,
-            color: Colors.grey[400],
+            color: colorScheme.onSurface.withOpacity(0.4),
           ),
         ],
       ),

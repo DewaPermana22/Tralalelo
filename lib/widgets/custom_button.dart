@@ -17,8 +17,8 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.backgroundColor = Colors.green,
-    this.foregroundColor = Colors.white,
+    this.backgroundColor,
+    this.foregroundColor,
     this.height = 50,
     this.borderRadius = 8,
     this.elevation = 0,
@@ -30,6 +30,11 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color effectiveBgColor =
+        backgroundColor ?? Theme.of(context).colorScheme.primary;
+    final Color effectiveFgColor =
+        foregroundColor ?? Theme.of(context).colorScheme.onPrimary;
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         minimumSize: Size.fromHeight(height!),
@@ -38,8 +43,8 @@ class CustomButton extends StatelessWidget {
         ),
         elevation: elevation,
         shadowColor: Colors.transparent,
-        backgroundColor: backgroundColor,
-        foregroundColor: foregroundColor,
+        backgroundColor: effectiveBgColor,
+        foregroundColor: effectiveFgColor,
       ),
       onPressed: isLoading ? null : onPressed,
       child: isLoading
@@ -48,21 +53,21 @@ class CustomButton extends StatelessWidget {
               width: 20,
               child: CircularProgressIndicator(
                 strokeWidth: 2,
-                valueColor: AlwaysStoppedAnimation<Color>(foregroundColor!),
+                valueColor: AlwaysStoppedAnimation<Color>(effectiveFgColor),
               ),
             )
           : icon != null
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(icon, size: fontSize! + 4),
+                    Icon(icon, size: fontSize! + 4, color: effectiveFgColor),
                     const SizedBox(width: 8),
                     Text(
                       text,
                       style: TextStyle(
                         fontSize: fontSize,
                         fontWeight: fontWeight,
-                        color: foregroundColor,
+                        color: effectiveFgColor,
                         fontFamily: 'Poppins',
                       ),
                     ),
@@ -73,7 +78,7 @@ class CustomButton extends StatelessWidget {
                   style: TextStyle(
                     fontSize: fontSize,
                     fontWeight: fontWeight,
-                    color: foregroundColor,
+                    color: effectiveFgColor,
                     fontFamily: 'Poppins',
                   ),
                 ),

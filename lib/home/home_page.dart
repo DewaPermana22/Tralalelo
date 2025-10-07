@@ -45,6 +45,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       body: PageView(
         controller: _pageController,
@@ -56,50 +59,85 @@ class _HomePageState extends State<HomePage> {
         },
         children: _pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: _currentIndex,
-        onTap: changePage,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
-        selectedLabelStyle: const TextStyle(
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w500,
-          fontSize: 12,
-        ),
-        unselectedLabelStyle: const TextStyle(
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w500,
-          fontSize: 12,
-        ),
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/svg/icons8-home.svg',
-              width: 25,
-              height: 25,
-              color: Colors.grey,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: isDark
+                  ? Colors.white.withOpacity(0.1)
+                  : Colors.black.withOpacity(0.1),
+              width: 0.5,
             ),
-            activeIcon: SvgPicture.asset(
-              'assets/svg/icons8-home-solid.svg',
-              height: 25,
-              width: 25,
-              color: Colors.green,
+          ),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: colorScheme.surface,
+          currentIndex: _currentIndex,
+          onTap: changePage,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: colorScheme.primary,
+          unselectedItemColor: colorScheme.onSurface.withOpacity(0.5),
+          selectedLabelStyle: const TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w600,
+            fontSize: 12,
+          ),
+          unselectedLabelStyle: const TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w500,
+            fontSize: 12,
+          ),
+          elevation: 0,
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/svg/icons8-home.svg',
+                width: 25,
+                height: 25,
+                colorFilter: ColorFilter.mode(
+                  colorScheme.onSurface.withOpacity(0.5),
+                  BlendMode.srcIn,
+                ),
+              ),
+              activeIcon: SvgPicture.asset(
+                'assets/svg/icons8-home-solid.svg',
+                height: 25,
+                width: 25,
+                colorFilter: ColorFilter.mode(
+                  colorScheme.primary,
+                  BlendMode.srcIn,
+                ),
+              ),
+              label: 'Home',
             ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.task_outlined, size: 30),
-            activeIcon: Icon(Icons.task_rounded, color: Colors.green, size: 30),
-            label: 'Task',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline_rounded, size: 30),
-            activeIcon: Icon(Icons.person_sharp, color: Colors.green, size: 30),
-            label: 'Profile',
-          ),
-        ],
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.task_outlined,
+                size: 30,
+                color: colorScheme.onSurface.withOpacity(0.5),
+              ),
+              activeIcon: Icon(
+                Icons.task_rounded,
+                color: colorScheme.primary,
+                size: 30,
+              ),
+              label: 'Task',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person_outline_rounded,
+                size: 30,
+                color: colorScheme.onSurface.withOpacity(0.5),
+              ),
+              activeIcon: Icon(
+                Icons.person_sharp,
+                color: colorScheme.primary,
+                size: 30,
+              ),
+              label: 'Profile',
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,34 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tralalelo_pra_ukk/theme/colors.dart';
 
 class TaskStatsSection extends StatelessWidget {
   const TaskStatsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Row(
       children: [
         Expanded(
           child: _buildTaskStat(
+            context: context,
             count: '12',
             label: 'Total',
-            color: Colors.blue,
+            color: isDark
+                ? AppColors.darkAccentBlue
+                : AppColors.lightAccentBlue,
+            icon: FontAwesomeIcons.listCheck,
           ),
         ),
         const SizedBox(width: 12),
         Expanded(
           child: _buildTaskStat(
+            context: context,
             count: '8',
             label: 'Selesai',
-            color: Colors.green,
+            color: isDark
+                ? AppColors.darkAccentGreen
+                : AppColors.lightAccentGreen,
+            icon: FontAwesomeIcons.circleCheck,
           ),
         ),
         const SizedBox(width: 12),
         Expanded(
           child: _buildTaskStat(
+            context: context,
             count: '4',
             label: 'Pending',
-            color: Colors.orange,
+            color: isDark
+                ? AppColors.darkAccentOrange
+                : AppColors.lightAccentOrange,
+            icon: FontAwesomeIcons.clock,
           ),
         ),
       ],
@@ -36,18 +51,29 @@ class TaskStatsSection extends StatelessWidget {
   }
 
   Widget _buildTaskStat({
+    required BuildContext context,
     required String count,
     required String label,
     required Color color,
+    required IconData icon,
   }) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent,
+          width: 1,
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: isDark
+                ? Colors.black.withOpacity(0.3)
+                : Colors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -62,16 +88,16 @@ class TaskStatsSection extends StatelessWidget {
               color: color.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: Icon(FontAwesomeIcons.circleCheck, color: color, size: 20),
+            child: Icon(icon, color: color, size: 20),
           ),
           const SizedBox(height: 8),
           Text(
             count,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 20,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w700,
-              color: Colors.black87,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 4),
@@ -81,7 +107,7 @@ class TaskStatsSection extends StatelessWidget {
               fontSize: 12,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w500,
-              color: Colors.grey[600],
+              color: colorScheme.onSurface.withOpacity(0.6),
             ),
           ),
         ],

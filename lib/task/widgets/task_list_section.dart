@@ -17,7 +17,6 @@ class TaskListSection extends StatelessWidget {
                 fontSize: 18,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
               ),
             ),
             Text(
@@ -26,7 +25,6 @@ class TaskListSection extends StatelessWidget {
                 fontSize: 14,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w500,
-                color: Colors.grey,
               ),
             ),
           ],

@@ -20,40 +20,29 @@ class InputCredentials extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 16,
         fontWeight: FontWeight.w500,
+        color: theme.textTheme.bodyLarge?.color,
       ),
       decoration: InputDecoration(
-        iconColor: Colors.green,
         labelText: labelText,
-        prefixIcon: icon != null ? Icon(icon, size: 16) : null,
-        floatingLabelStyle: const TextStyle(
-          color: Colors.green,
+        prefixIcon: icon != null
+            ? Icon(icon, size: 18, color: colorScheme.primary)
+            : null,
+        floatingLabelStyle: TextStyle(
+          color: colorScheme.primary,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w500,
           fontSize: 14,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.black38),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.green, width: 1),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.red, width: 1),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.red, width: 1),
-          borderRadius: BorderRadius.circular(8),
         ),
       ),
       validator: validator,
