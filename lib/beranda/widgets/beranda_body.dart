@@ -26,7 +26,7 @@ class BerandaBody extends StatelessWidget {
               fontSize: 18,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w600,
-              color: colorScheme.onBackground,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
@@ -97,7 +97,7 @@ class BerandaBody extends StatelessWidget {
                   fontSize: 18,
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
-                  color: colorScheme.onBackground,
+                  color: colorScheme.onSurface,
                 ),
               ),
               TextButton(

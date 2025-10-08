@@ -14,7 +14,7 @@ class TaskAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: 80,
       elevation: 0,
       flexibleSpace: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

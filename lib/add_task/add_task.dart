@@ -18,7 +18,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600),
         ),
       ),
-      body: Center(child: Text('Add Task Screen')),
+      body: SafeArea(child: Container(
+        alignment: Alignment.center,
+        child: Text(
+          'Add Task Screen',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+      )),
     );
   }
 }

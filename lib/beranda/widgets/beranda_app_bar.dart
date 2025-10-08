@@ -5,7 +5,7 @@ class BerandaAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
-  BerandaAppBar({super.key});
+  const BerandaAppBar({super.key});
 
   String _getCurrentDate() {
     final now = DateTime.now();
@@ -95,19 +95,7 @@ class BerandaAppBar extends StatelessWidget implements PreferredSizeWidget {
             ],
           ),
         ),
-        const SizedBox(width: 8),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: IconButton(
-            icon: Icon(
-              FontAwesomeIcons.bell,
-              color: colorScheme.onSurface,
-              size: 20,
-            ),
-            onPressed: () {},
-          ),
-        ),
-        const SizedBox(width: 8),
+        const SizedBox(width: 12),
       ],
     );
   }

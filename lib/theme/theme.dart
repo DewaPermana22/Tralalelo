@@ -9,11 +9,9 @@ class AppTheme {
     colorScheme: const ColorScheme.light(
       primary: AppColors.lightPrimaryGreen,
       secondary: AppColors.lightPrimaryBlue,
-      background: AppColors.lightBackground,
       surface: AppColors.lightComponent,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
-      onBackground: AppColors.lightText,
       onSurface: AppColors.lightText,
       outline: Color(0xFFD9D9D9),
     ),
@@ -68,11 +66,9 @@ class AppTheme {
     colorScheme: const ColorScheme.dark(
       primary: AppColors.darkPrimaryBlue,
       secondary: AppColors.darkPrimaryGreen,
-      background: AppColors.darkBackground,
       surface: AppColors.darkComponent,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
-      onBackground: AppColors.darkText,
       onSurface: AppColors.darkText,
       outline: Color(0xFF4B4B4B),
     ),
